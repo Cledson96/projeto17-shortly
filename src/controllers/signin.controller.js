@@ -9,6 +9,7 @@ export async function signin(req, res) {
     const validation = signin_Schema.validate(req.body, { abortEarly: false });
     const token = v4();
     let rows
+    let userId
 
 
     if (validation.error) {
@@ -24,6 +25,7 @@ export async function signin(req, res) {
             res.status(401).send("Usuario ou senhas incorretos!");
             return
         }
+        userId = rows.rows[0].id
 
     } catch (err) {
         res.status(500).send(err.message);
@@ -36,16 +38,19 @@ export async function signin(req, res) {
     }
 
     try {
-
-        const session = await connection.query("SELECT * FROM session WHERE email=$1;", [email]);
-
-        if (session.rows.length > 0) {
+       
+        const session = await connection.query("SELECT * FROM session WHERE userid=$1;", [userId]);
+     
+       
+        if (session.rows.length > 0) {  
             res.status(200).send(session.rows[0].token);
+           
 
             return
         } else {
-            await connection.query("INSERT INTO session (email,token) VALUES ($1, $2);", [email, token]);
+            connection.query("INSERT INTO session (userid, token) VALUES ($1, $2);", [userId, token]);
             res.status(200).send(token);
+           
         }
 
     } catch (err) {

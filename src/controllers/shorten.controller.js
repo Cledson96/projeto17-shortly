@@ -30,9 +30,13 @@ export async function shorten(req, res) {
 
     try {
         await connection.query("INSERT INTO shorten (url,shorturl,userid) VALUES ($1, $2, $3);", [url, model, userId]);
+        
         res.status(201).send({
             "shortUrl": model
         });
+      let ide = await connection.query("SELECT (id) FROM shorten WHERE url=$1;", [url]);
+     
+        await connection.query("INSERT INTO views (shortid,userid,visitcount) VALUES ($1, $2, 0);", [ide.rows[0].id, userId]);
     } catch (err) {
         res.status(500).send(err.message);
     }

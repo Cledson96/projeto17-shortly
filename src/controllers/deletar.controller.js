@@ -21,8 +21,10 @@ export async function deletar(req, res) {
     try {
         await connection.query("DELETE FROM shorten WHERE id=$1", [id]);
         res.sendStatus(204);
+        return
       } catch (err) {
         res.status(500).send(err.message);
+        return
       }
    
 }

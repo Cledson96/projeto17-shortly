@@ -5,6 +5,7 @@ import shorten from "./routes/shorten.route.js";
 import urls from "./routes/urls.route.js";
 import open from "./routes/open.route.js";
 import deletar from "./routes/deletar.route.js";
+import shortuser from "./routes/shortuser.route.js";
 
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(shorten);
 app.use(urls);
 app.use(open);
 app.use(deletar);
+app.use(shortuser);
 
 
 

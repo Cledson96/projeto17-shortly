@@ -1,0 +1,27 @@
+{
+  "name": "projeto17-shortly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cledson96/projeto17-shortly.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cledson96/projeto17-shortly/issues"
+  },
+  "homepage": "https://github.com/Cledson96/projeto17-shortly#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "express": "^4.18.2",
+    "joi": "^17.7.0",
+    "pg": "^8.8.0"
+  }
+}

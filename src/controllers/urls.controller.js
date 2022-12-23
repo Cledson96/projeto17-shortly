@@ -2,8 +2,7 @@ import { connection } from "../database/db.js";
 
 export async function urls(req, res) {
     const { id } = req.params;
-    console.log(id)
-
+  
     try {
 
         const { rows } = await connection.query("SELECT * FROM shorten WHERE id=$1;", [id]);

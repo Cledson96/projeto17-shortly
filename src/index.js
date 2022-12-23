@@ -4,6 +4,7 @@ import signin from "./routes/signin.route.js";
 import shorten from "./routes/shorten.route.js";
 import urls from "./routes/urls.route.js";
 import open from "./routes/open.route.js";
+import deletar from "./routes/deletar.route.js";
 
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(signin);
 app.use(shorten);
 app.use(urls);
 app.use(open);
+app.use(deletar);
 
 
 

@@ -1,9 +1,9 @@
 import { connection } from "../database/db.js";
 
 export async function validador(req, res, next) {
-    const { authorization } = req.headers;
-  
-  const token = authorization?.replace("Bearer ","");
+  const { authorization } = req.headers;
+
+  const token = authorization?.replace("Bearer ", "");
 
 
   let rows
@@ -17,14 +17,13 @@ export async function validador(req, res, next) {
 
     if (rows.rows.length === 0) {
 
-        res.status(401).send("token invalido!");
-        return
+      res.status(401).send("token invalido!");
+      return
     }
-   
     res.locals.user = rows.rows[0].userid;
-} catch (err) {
+  } catch (err) {
     res.status(500).send(err.message);
-}
+  }
 
 
   next();
